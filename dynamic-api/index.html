@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic api</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+
+    <div id="xml-grabber"></div>
+
+    <script>
+
+        (function(doc, tag, id){
+             var js = doc.getElementsByTagName(tag)[0];
+             if (doc.getElementById(id)) {return;}
+             js = doc.createElement(tag); js.id = id;
+             js.src = "./js/widget.js";
+             js.type = "text/javascript";
+             doc.body.appendChild(js);
+           }(document, 'script', 'xml-feed-grabber'));
+
+        window.onload = function() {
+            XmlFeedGrabber.setOptions({
+                feedUrl: "http://webmobtuts.com/feed/",
+                showDescription: true,
+                                itemsCount: 10,
+                currentTheme: "beige"
+            });
+
+               XmlFeedGrabber.render();
+           }
+    </script>
+</body>
+</html>
